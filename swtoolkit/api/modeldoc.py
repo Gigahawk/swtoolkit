@@ -71,6 +71,13 @@ class ModelDoc(IModelDoc):
         if fit:
             self.zoom_to_fit()
 
+    @property
+    def active_configuration(self):
+        return self.configuration_manager.ActiveConfiguration.Name
+
+    def show_configuration(self, name: str):
+        self.show_configuration2(name)
+
     def zoom_to_fit(self):
         """Fits model to viewport."""
         self.view_zoom_to_fit2()

@@ -15,6 +15,14 @@ class ISldWorks:
         self._isldworks = COM("SldWorks.Application")
 
     @property
+    def command_in_progress(self):
+        return self._instance.CommandInProgress
+
+    @command_in_progress.setter
+    def command_in_progress(self, value):
+        self._instance.CommandInProgress = value
+
+    @property
     def _instance(self):
         return self._isldworks
 

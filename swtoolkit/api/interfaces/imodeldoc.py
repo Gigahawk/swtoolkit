@@ -31,6 +31,14 @@ class IModelDoc:
     def configuration_manager(self):
         return self._instance.ConfigurationManager
 
+    @property
+    def configuration_names(self):
+        return self._instance.GetConfigurationNames
+
+    def show_configuration2(self, config_name):
+        arg = win32com.client.VARIANT(pythoncom.VT_BSTR, config_name)
+        return self._instance.ShowConfiguration2(arg)
+
     def active_view(self):
         pass
 
