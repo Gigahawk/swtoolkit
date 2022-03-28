@@ -41,6 +41,21 @@ class ModelDoc(IModelDoc):
         retval, err, warn = self.save3(_options)
         return retval, err.value, warn.value
 
+    def save_as(self, name, export_file_data, options: str = "silent"):
+        """Saves the current ModelDoc object
+
+        Args:
+            name (str): name to save as
+            options (str, optional): Save as options. Defaults to "silent".
+
+        Returns:
+            Tuple: True if save is successful, followed by Errors and Warnings
+        """
+        _options = SaveAsOptions[options.upper().replace(" ", "_")].value
+        # save_as3 is broken for now
+        retval, err, warn = self.extension.save_as2(name, export_file_data, _options)
+        return retval, err.value, warn.value
+
     def set_view(self, view_name: str, fit: bool = False):
         """Allows the model view to be selected
 

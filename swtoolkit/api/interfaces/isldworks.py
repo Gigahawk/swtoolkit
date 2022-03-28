@@ -110,6 +110,10 @@ class ISldWorks:
     def get_cwd(self):
         return self._instance.GetCurrentWorkingDirectory()
 
+    def get_export_file_data(self):
+        arg = win32com.client.VARIANT(pythoncom.VT_I4, 1) # swExportDataFileType_e
+        return self._instance.GetExportFileData(arg)
+
     def _get_documents(self):
         return self._instance.GetDocuments
 
